@@ -114,7 +114,7 @@ func getPlayerMove(board *[9]int) {
 	board[move-1] = PLAYER
 }
 
-func printBoard(board *[9]int) {
+func printBoard(board [9]int) {
 	fmt.Printf("\n")
 	fmt.Printf(" %c | %c | %c \n", getSymbol(board[0]), getSymbol(board[1]), getSymbol(board[2]))
 	fmt.Printf("-----------\n")
@@ -168,7 +168,7 @@ func main() {
 	for i := 0; i < 9; i++ {
 		if (firstMover+i)%2 == 1 {
 			clearScreen()
-			printBoard(&board)
+			printBoard(board)
 			getPlayerMove(&board)
 		} else {
 			aiMove := minimax(board, AI, numBlanks).move
@@ -177,18 +177,19 @@ func main() {
 
 		if evaluate(board) != 0 {
 			clearScreen()
-			printBoard(&board)
+			printBoard(board)
 			if evaluate(board) == AI {
 				fmt.Printf("AI win.\n")
 			} else {
 				fmt.Printf("HUMAN win.\n")
 			}
+			os.Exit(0)
 		}
 		numBlanks--
 	}
 
 	clearScreen()
-	printBoard(&board)
+	printBoard(board)
 	fmt.Printf("Draw.\n")
 	os.Exit(0)
 }
