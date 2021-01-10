@@ -24,26 +24,23 @@ const (
 )
 
 // functions to determinate min and max in Minimax
-func min(a, b int) int {
-	if a > b { return b } ; return a
-}
-func max(a, b int) int {
-	if a > b { return a } ; return b
-}
+func min(a, b int) int { if a > b { return b } ; return a }
+func max(a, b int) int { if a > b { return a } ; return b }
 
 type Strategy struct{ move, payoff int } // struct, packaging move and payoff values
 var clear map[string]func()              // variable for clearScreen function
 
 func main() {
+	
 	board := [9]int{}
 	firstMover, numBlanks := 0, 9
 
 	clearScreen()
-	fmt.Printf("Tic-tac-toe\n")
-	fmt.Printf("\twith the minimax algorithm\n")
-	fmt.Printf("Human: X\n")
-	fmt.Printf("Machine: O\n")
-	fmt.Printf("-----------------------------------\n")
+	fmt.Printf("Go tic-tac-toe with the minimax algorithm\n")
+	fmt.Printf("+---------------------------------+\n")
+	fmt.Printf("| Human: X\t\t\t  |\n")
+	fmt.Printf("| Machine: O\t\t\t  |\n")
+	fmt.Printf("+---------------------------------+\n")
 	for i := true; i; i = (firstMover != 1 && firstMover != 2) {
 		fmt.Printf("Would you like to go first or second? [1 / 2] ")
 		fmt.Scanf("%d", &firstMover)
@@ -110,11 +107,7 @@ func minimax(board [9]int, depth, alpha, beta, player int) Strategy {
 	// Recursive part of the algorithm
 	bestMove := -1
 	var bestVal int
-	if player == AI {
-		bestVal = -INF
-	} else {
-		bestVal = INF
-	}
+	if player == AI { bestVal = -INF } else { bestVal = INF }
 	for i := range board {
 		if board[i] == EMPTY {
 			// Searching through all branches
@@ -124,17 +117,13 @@ func minimax(board [9]int, depth, alpha, beta, player int) Strategy {
 				bestVal = max(branchVal, bestVal) // the computer is maximizer
 				if bestVal < branchVal {
 					alpha = max(alpha, bestVal)
-					if alpha >= beta {
-						break
-					}
+					if alpha >= beta { break }
 				}
 			} else {
 				bestVal = min(branchVal, bestVal) // the human is minimizer 
 				if bestVal > branchVal {
 					beta = min(beta, bestVal)
-					if beta <= alpha {
-						break
-					}
+					if beta <= alpha { break }
 				}
 			}
 			board[i] = EMPTY // reset the board
@@ -204,9 +193,5 @@ func init() {
 // Clears the console
 func clearScreen() {
 	value, ok := clear[runtime.GOOS]
-	if ok {
-		value()
-	} else {
-		panic("Unsupported platform!") // can't clear terminal
-	}
+	if ok { value() } else { panic("Unsupported platform!") }
 }
