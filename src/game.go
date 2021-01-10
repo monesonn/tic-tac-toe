@@ -87,11 +87,11 @@ func evaluate(board [9]int) int {
 	/*
 		Function to heuristic evaluation of state.
 		Tests if a specific player wins. Possibilities:
-	    * Three rows    [X X X] or [O O O]
-	    * Three cols    [X X X] or [O O O]
-	    * Two diagonals [X X X] or [O O O]
-	    :param board: the state of the current board
-	    :return: +1 if the computer wins; -1 if the human wins; 0 draw
+		* Three rows    [X X X] or [O O O]
+		* Three cols    [X X X] or [O O O]
+		* Two diagonals [X X X] or [O O O]
+		:param board: the state of the current board
+		:return: +1 if the computer wins; -1 if the human wins; 0 draw
 	*/
 	for i := 0; i < 3; i++ {
 		if board[i] == board[i+3] && board[i] == board[i+6] {
@@ -114,11 +114,11 @@ func evaluate(board [9]int) int {
 
 func minimax(board [9]int, player, depth int) Strategy {
 	/*
-	   AI function that choice the best move
-	   :param state: current state of the board
-	   :param depth: node index in the tree (0 <= depth <= 9),
-	   :param player: an human or a computer
-	   :return: a structure element {move, payoff}
+		AI function that choice the best move
+		:param state: current state of the board
+		:param depth: node index in the tree (0 <= depth <= 9),
+		:param player: an human or a computer
+		:return: a structure element {move, payoff}
 	*/
 	evaluation := evaluate(board)
 	if evaluation != 0 {
@@ -175,9 +175,9 @@ func getSymbol(r int) rune {
 
 func getPlayerMove(board *[9]int) {
 	/*
-	   The Human plays choosing a valid move.
-	   :param board: changing the current state of the board
-	   :return:
+		The Human plays choosing a valid move.
+		:param board: changing the current state of the board
+		:return:
 	*/
 	var move int
 	fmt.Printf("Where would you like to move? [1 - 9] ")
