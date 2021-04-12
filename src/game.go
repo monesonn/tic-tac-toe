@@ -1,11 +1,13 @@
 /*
-An implementation of Minimax AI Algorithm in Tic Tac Toe,
-using Golang. For education purpose.
-This program is available under GPL license.
-Author: monesonn
 Year: 2021
+Author: Stanislav <git.io/monesonn>
+Description: An implementation of Minimax AI Algorithm in Tic Tac Toe,
+	     using Golang. For education purpose.
+	     
 Credit: https://github.com/Cledersonbc/tic-tac-toe-minimax
 	https://github.com/mabsoftware/minimax
+	
+This program is available under GPL license.
 */
 package main
 
