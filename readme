@@ -1,0 +1,24 @@
+ 0 | x | x
+---|---|---
+ x | 0 | 0
+---|---|---
+ x | 0 | 0
+   
+Tic-Tac-Toe 
+===========
+Simple implementation of tic-tac-toe game using the Minimax algorithm.
+Written on Golang.
+
+How to run?
+-----------
+To challenge yourself playing against AI, you can use the bash-script below: 
+
+    $ ./play.sh
+
+Also you can do it manually by building the binary file: 
+    
+    $ go build -o bin/ttt src/game.go && ./bin/ttt
+    
+[optional] 
+    After building put binary file into the $PATH directory, f.e directory where do you store your scripts locally (default: ~/.local/bin).
+    So, you can play anytime directly from the terminal when you're bored. 
